@@ -52,4 +52,18 @@ describe("StringCalculatorTDD", () => {
 			"Negatives not allowed: -1, -3"
 		);
 	});
+
+	//  this is the test case for no. greater than 1000
+
+	test("should ignore numbers greater than 1000", () => {
+		expect(calculator.add("2,1001")).toBe(2);
+		expect(calculator.add("1000,2000,3")).toBe(1003);
+	});
+
+	// this is the test case for multiple delimiters
+
+	test("should handle multiple delimiters of any length", () => {
+		expect(calculator.add("//[***]\n1***2***3")).toBe(6);
+		expect(calculator.add("//[*][%]\n1*2%3")).toBe(6);
+	});
 });

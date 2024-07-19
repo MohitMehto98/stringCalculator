@@ -9,7 +9,16 @@ class StringCalculatorTDD {
 		if (numbers.startsWith("//")) {
 			const delimiterLastIndex = numbers.indexOf("\n");
 			const delimiterPart = numbers.substring(2, delimiterLastIndex);
-			delimiter = new RegExp(ecscapeRegExpression(delimiterPart), "g");
+
+			if (delimiterPart.startsWith("[")) {
+				const delimiters = delimiterPart
+					.match(/\[([^\]]+)\]/g)
+					.map((d) => d.slice(1, -1));
+				const escapedDelimiters = delimiters.map((d) => ecscapeRegExpression(d));
+				delimiter = new RegExp(escapedDelimiters.join("|"), "g");
+			} else {
+				delimiter = new RegExp(ecscapeRegExpression(delimiterPart), "g");
+			}
 			numbers = numbers.substring(delimiterLastIndex + 1);
 		}
 
