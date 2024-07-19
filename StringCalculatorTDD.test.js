@@ -43,4 +43,13 @@ describe("StringCalculatorTDD", () => {
 		expect(calculator.add("//;\n1;2")).toBe(3);
 		expect(calculator.add("//|\n1|2|3")).toBe(6);
 	});
+
+	//  this is the test for check and throw error for negative numbers
+
+	test("should throw an error for negative numbers", () => {
+		expect(() => calculator.add("1,-2,3")).toThrow("Negatives not allowed: -2");
+		expect(() => calculator.add("-1,2,-3")).toThrow(
+			"Negatives not allowed: -1, -3"
+		);
+	});
 });

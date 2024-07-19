@@ -14,7 +14,21 @@ class StringCalculatorTDD {
 		}
 
 		const numberArray = numbers.split(delimiter);
-		return numberArray.reduce((sum, num) => sum + parseInt(num, 10), 0);
+		const negatives = [];
+		const sum = numberArray.reduce((total, num) => {
+			const number = parseInt(num, 10);
+			if (number < 0) {
+				negatives.push(number);
+			} else if (number <= 1000) {
+				return total + number;
+			}
+			return total;
+		}, 0);
+		if (negatives.length > 0) {
+			throw new Error(`Negatives not allowed: ${negatives.join(", ")}`);
+		}
+
+		return sum;
 	}
 }
 
