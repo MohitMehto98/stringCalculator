@@ -24,7 +24,7 @@ describe("StringCalculatorTDD", () => {
           expect(calculator.add("3,4")).toBe(7);
     });
     
-    //  this is the test case for Unknown Number of Numbers
+    //  this is the test case for Unknown no. of Numbers
     test("should return the sum of an unknown number of numbers", () => {
         expect(calculator.add("1,2,3")).toBe(6);
         expect(calculator.add("4,5,6,7,8,9")).toBe(39);
